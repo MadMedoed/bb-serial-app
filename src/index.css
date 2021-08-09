@@ -5,9 +5,38 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(#37474f, #000000);
 }
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+main.content {
+  min-height: calc(100vh - 64px - 70px);
+}
+.characters{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem
+}
+
+.characters .card .card-image img{
+  height: 420px;
+  object-fit: cover;
+}
+
+.content-types{
+  margin: 1rem 0;
+}
+
+.content-types label{
+  margin-right: 1rem;
+}
+
+.episodes{
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem
 }
