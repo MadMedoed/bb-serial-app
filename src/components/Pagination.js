@@ -1,39 +1,34 @@
 import React from 'react'
 
-class Pagination extends React.Component {
+function Pagination(props){
 
-    
-
-    handleNext = () => {
-        this.props.handlePagination(this.props.offsetPages + 12)
+    const handleNext = () => {
+        props.handlePagination(props.offsetPages + 12)
     }
 
-    handlePrev = () => {
-        this.props.handlePagination(this.props.offsetPages - 12)
+    const handlePrev = () => {
+        props.handlePagination(props.offsetPages - 12)
     }
 
+    return(
+        <div className="pagination">
 
-    render(){
-        return(
-            <div className="pagination">
+                {
+                    props.offsetPages === 0 ? 
+                    <button className="btn" disabled>prev</button> 
+                    : <button className="btn" onClick={handlePrev}>prev</button>
+                }
 
-                    {
-                        this.props.offsetPages === 0 ? 
-                        <button className="btn" disabled>prev</button> 
-                        : <button className="btn" onClick={this.handlePrev}>prev</button>
-                    }
-
-                    {
-                        this.props.offsetPages === 60 ? 
-                        <button className="btn" disabled>next</button> 
-                        : <button className="btn" onClick={this.handleNext}>next</button>
-                    }
-                    
-                    
-            </div>
-        )
-    }
-
+                {
+                    props.offsetPages === 60 ? 
+                    <button className="btn" disabled>next</button> 
+                    : <button className="btn" onClick={handleNext}>next</button>
+                }
+                
+                
+        </div>
+    )
 }
+
 
 export default Pagination;

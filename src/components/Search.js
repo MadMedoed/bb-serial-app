@@ -1,42 +1,43 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-class Search extends React.Component {
+function Search(props) {
+    const { 
+        searchCharacter = Function.prototype 
+    } = props;
 
-    state = {
-        search: '',
-    }
-
-    handlekey = (event) => {
+    const [search, setSearch] = useState('');
+    
+    
+    const handlekey = (event) => {
         if(event.key === 'Enter'){
-            this.props.searchCharacter(this.state.search)
+            searchCharacter(search)
         }
     }
 
-    handleChange = (event) => {
-        this.setState({search: event.target.value})
+    const handleChange = (event) => {
+        setSearch(event.target.value)
     }
 
-    handleSearch = () => {
-        this.props.searchCharacter(this.state.search)
+    const handleSearch = () => {
+        searchCharacter(search)
     }
 
-    render(){
-        return(
-            <div className="row">
-                <div className="input-field">
-                    <input 
-                        placeholder="Character Name" 
-                        type="text" 
-                        className="validate" 
-                        onKeyDown={this.handlekey}
-                        onChange={this.handleChange}
-                    />
-                </div>
-                <button className="btn" onClick={this.handleSearch}>Search</button>
+    return(
+        <div className="row">
+            <div className="input-field">
+                <input 
+                    placeholder="Character Name" 
+                    type="text" 
+                    className="search-input validate" 
+                    onKeyDown={handlekey}
+                    onChange={handleChange}
+                />
             </div>
-        )
-    }
-
+            <button className="btn" onClick={handleSearch}>Search</button>
+        </div>
+    )
 }
+
+
 
 export default Search;
